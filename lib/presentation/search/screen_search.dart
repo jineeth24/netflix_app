@@ -30,8 +30,8 @@ class ScreenSearch extends StatelessWidget {
             kheight20,
             //two widgets,before search and after search
            const Expanded(
-              //child: SearchIdleWidget(),
-              child: SearchResultWidget(),
+              child: SearchIdleWidget(),
+              //child: SearchResultWidget(),
             ),
             //after search
             // kheight,
