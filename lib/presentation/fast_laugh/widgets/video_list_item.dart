@@ -2,15 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:netflix/core/colors/colors.dart';
 
 class VideoListItemWidget extends StatelessWidget {
-  const VideoListItemWidget({super.key, required this.index});
-  final int index;
+  const VideoListItemWidget({super.key, required this.posterpath});
+  final String posterpath;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Container(
-          color: Colors.accents[index],
+          width: MediaQuery.of(context).size.width,
+          height:MediaQuery.of(context).size.height, 
+          //show movie poster ,
+          decoration: BoxDecoration(
+            color: kwhiteColor,
+            image: DecorationImage(
+              image: NetworkImage("https://image.tmdb.org/t/p/original/$posterpath"),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         Align(
           alignment: Alignment.bottomCenter,

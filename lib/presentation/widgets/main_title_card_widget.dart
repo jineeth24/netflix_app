@@ -32,7 +32,7 @@ class MainTitleCardWidget extends StatelessWidget {
             itemCount: movieList.length,
             
             itemBuilder: (context, index) {
-              print(movieList.length);
+             // print(movieList.length);
               
               final String movieImageUrl=imgBaseUrl + movieList[index].posterPath.toString();
               return MainCardWidget(imageUrl: movieImageUrl,);

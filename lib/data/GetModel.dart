@@ -136,6 +136,7 @@ GetModel copyWith({  bool? adult,
     map['vote_average'] = _voteAverage;
     map['vote_count'] = _voteCount;
     return map;
-  }
+    }
 
 }
+

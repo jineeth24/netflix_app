@@ -4,14 +4,16 @@ import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/colors/constants.dart';
 import 'package:netflix/presentation/search/widgets/title.dart';
 
-const imageUrl =
-    "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/jMTvYnFr89K0RxO9K2sz4poWCCc.jpg";
+//const imageUrl =  "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/jMTvYnFr89K0RxO9K2sz4poWCCc.jpg";
 
 class SearchIdleWidget extends StatelessWidget {
-  const SearchIdleWidget({super.key});
+   SearchIdleWidget({super.key,required this.searchIdleMovies});
+
+   final List<dynamic> searchIdleMovies;
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -22,12 +24,12 @@ class SearchIdleWidget extends StatelessWidget {
           child: ListView.separated(
             //shrinkWrap: true,
             itemBuilder: (context, index) {
-              return const TopSearchItemTile();
+              return  TopSearchItemTile(imageurl: searchIdleMovies[index].posterPath,moviename: searchIdleMovies[index].title! ,);
             },
             separatorBuilder: (context, index) {
               return kheight20;
             },
-            itemCount: 15,
+            itemCount:searchIdleMovies.length ,
           ),
         ),
       ],
@@ -38,7 +40,9 @@ class SearchIdleWidget extends StatelessWidget {
 
 
 class TopSearchItemTile extends StatelessWidget {
-  const TopSearchItemTile({super.key});
+   TopSearchItemTile({super.key,required this.imageurl,required this.moviename});
+  String imageurl;
+  String moviename;
 
   @override
   Widget build(BuildContext context) {
@@ -49,17 +53,17 @@ class TopSearchItemTile extends StatelessWidget {
         Container(
           width: screenWidth * 0.35,
           height: screenWidth * 0.25,
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             color: kwhiteColor,
             image: DecorationImage(
-              image: NetworkImage(imageUrl),
+              image: NetworkImage("https://image.tmdb.org/t/p/original/$imageurl"),
               fit: BoxFit.cover,
             ),
           ),
         ),
          kwidth,
-        const Expanded(
-          child: Text("Movie Name "),
+         Expanded(
+          child: Text(moviename),
         ),
        
         CircleAvatar(
